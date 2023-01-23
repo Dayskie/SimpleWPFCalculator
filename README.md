@@ -6,4 +6,4 @@ TODO:
   * Look into cleaning up evaluation function
   * Make it look not horrible
   
-![calc-image](https://imgur.com/a/0pF7oHm)
+![calc-image](https://i.imgur.com/jIUIHQJ.jpg)

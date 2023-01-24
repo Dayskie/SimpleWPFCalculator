@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="350"/>
+            <RowDefinition Height="340"/>
         </Grid.RowDefinitions>
 
         <StackPanel>
@@ -33,8 +33,12 @@
         </StackPanel>
 
 
-        <UniformGrid Grid.Row="1" Rows="4" Margin="5">
+        <UniformGrid Grid.Row="1" Rows="5" Margin="5,5,5,5">
 
+            <Button Content="+/-" Click="FlipNum"></Button>
+            <Button Content="sqr"></Button>
+            <Button Click="InputClear" Content="C"></Button>
+            <Button Click="TrimNumberInput" Content="Delete"></Button>
 
             <Button Name="n7" Click="InputNumber">7</Button>
             <Button Name="n8" Click="InputNumber">8</Button>

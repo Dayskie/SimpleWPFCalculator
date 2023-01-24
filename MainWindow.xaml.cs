@@ -14,7 +14,6 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Calculator;
 
 namespace Calculator
 {
@@ -27,8 +26,6 @@ namespace Calculator
         private string history = "";
         private bool ClearScreen = true;
         private bool decimalInserted = false;
-
-        //todo: implement decimal, enable repeated inputs of equal
 
         public MainWindow()
         {
@@ -69,6 +66,7 @@ namespace Calculator
 
         private void EvaluateArithmatic(object sender, RoutedEventArgs e)
         {
+            if(history == "") { return; }
             // a really scuffed way to allow for the repeated input of an operation
             // basically if yuou press '=' after putting in something like 3 + 3
             // it will ad 3 to the value of the operation (so history will say 6 + 3)
@@ -77,7 +75,7 @@ namespace Calculator
 
             if (history.Contains("="))
             {
-                string[] temp = history.Split(' ');
+                string[] temp = history.Split(' '); // 3 + 20 =  ->  '3', '+', '20', '='
                 temp[0] = display;
                 inputArithmatic = String.Join(" ", temp);
 
@@ -91,14 +89,37 @@ namespace Calculator
             
             display = Calculate.CalculateString(inputArithmatic);
             ClearScreen = true;
+            decimalInserted = false;
+            Update();
+        }
+
+        private void FlipNum(object sender, RoutedEventArgs e)
+        {
+            if(display == "0") { return; }
+            float tempNum = -1 * float.Parse(display);
+            display = tempNum.ToString();
             Update();
         }
 
         private void InputClear(object sender, RoutedEventArgs e)
         {
-            // < Button Name = "Clear" Click = "InputClear" Content = "C" />
             display = "0";
             history = "";
+            ClearScreen = true;
+            Update();
+        }
+
+        private void TrimNumberInput(object sender, RoutedEventArgs e)
+        {
+            if(display == "0") { return; }
+            if(display.Length == 1) { 
+                display = "0";
+                ClearScreen = true;
+            }
+            else
+            {
+                display = display.Remove(display.Length - 1, 1);
+            }
             Update();
         }
 
@@ -107,5 +128,6 @@ namespace Calculator
             InputScreen.Text = display;
             InputHistory.Text = history;
         }
+
     }
 }

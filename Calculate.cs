@@ -36,5 +36,11 @@ namespace Calculator
 
             return output.ToString();
         }
+
+        public static string Square(string input)
+        {
+            float temp = float.Parse(input);
+            return (temp * temp).ToString();
+        }
     }
 }

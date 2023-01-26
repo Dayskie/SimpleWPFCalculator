@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Calculator" 
         Height="450" Width="300"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="#1f1f1f">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -21,12 +22,14 @@
             <TextBlock Text="0"
                    Name="InputHistory"
                    FontSize="15"
+                   Foreground="#b5b5b5"
                    Margin="0,5,5,5"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"/>
             <TextBlock Text="Screen for entry"
                    Name="InputScreen"
                    FontSize="30"
+                   Foreground="White"
                    Margin="0,0,5,0"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"/>
@@ -36,9 +39,9 @@
         <UniformGrid Grid.Row="1" Rows="5" Margin="5,5,5,5">
 
             <Button Content="+/-" Click="FlipNum"></Button>
-            <Button Content="sqr"></Button>
+            <Button Content ="x²" Click="SqaureNum"></Button>
             <Button Click="InputClear" Content="C"></Button>
-            <Button Click="TrimNumberInput" Content="Delete"></Button>
+            <Button Click="TrimNumberInput" Content="←"></Button>
 
             <Button Name="n7" Click="InputNumber">7</Button>
             <Button Name="n8" Click="InputNumber">8</Button>

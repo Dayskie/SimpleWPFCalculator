@@ -112,7 +112,7 @@ namespace Calculator
         private void TrimNumberInput(object sender, RoutedEventArgs e)
         {
             if(display == "0") { return; }
-            if(display.Length == 1) { 
+            if(display.Length == 1 || display.Length == 2 && display.Contains("-")) { 
                 display = "0";
                 ClearScreen = true;
             }
@@ -123,11 +123,17 @@ namespace Calculator
             Update();
         }
 
+        private void SqaureNum(object sender, RoutedEventArgs e)
+        {
+            if(display == "0") { return; }
+            display = Calculate.Square(display);
+            Update();
+        }
+
         private void Update()
         {
             InputScreen.Text = display;
             InputHistory.Text = history;
         }
-
     }
 }
